@@ -1,0 +1,60 @@
+name: Deploy AI-HPC Infrastructure
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: "1.5.0"
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Configure kubectl
+        run: |
+          echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
+          export KUBECONFIG=kubeconfig.yaml
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Plan
+        run: |
+          cd terraform
+          terraform plan
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          cd terraform
+          terraform apply -auto-approve
+
+      - name: Verify Deployment
+        run: |
+          kubectl get pods -n ai-training
+          kubectl get pods -n monitoring
+
+      - name: Run GPU Test
+        run: |
+          kubectl apply -f kubernetes/gpu-training.yaml
+          kubectl wait --for=condition=complete job/gpu-training-job -n ai-training --timeout=300s
+          kubectl logs -n ai-training job/gpu-training-job 
