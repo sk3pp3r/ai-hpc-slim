@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1000" height="800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="1000" height="800" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="500" y="40" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">AI-HPC Infrastructure Architecture</text>
+    
+    <!-- GitHub Actions Box -->
+    <rect x="50" y="80" width="900" height="100" rx="10" fill="#fff" stroke="#666" stroke-width="2"/>
+    <text x="500" y="110" font-family="Arial" font-size="18" text-anchor="middle" fill="#333">CI/CD Pipeline (GitHub Actions)</text>
+    
+    <!-- CI/CD Components -->
+    <rect x="100" y="130" width="200" height="30" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="200" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Test</text>
+    
+    <rect x="350" y="130" width="200" height="30" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="450" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Build &amp; Push</text>
+    
+    <rect x="600" y="130" width="200" height="30" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="700" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Deploy</text>
+    
+    <!-- Kubernetes Cluster Box -->
+    <rect x="50" y="200" width="900" height="550" rx="10" fill="#fff" stroke="#666" stroke-width="2"/>
+    <text x="500" y="230" font-family="Arial" font-size="18" text-anchor="middle" fill="#333">Kubernetes Cluster</text>
+    
+    <!-- Namespaces -->
+    <rect x="80" y="250" width="400" height="480" rx="5" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+    <text x="280" y="275" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">AI Training Namespace</text>
+    
+    <rect x="520" y="250" width="400" height="480" rx="5" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+    <text x="720" y="275" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">Monitoring Namespace</text>
+    
+    <!-- AI Training Components -->
+    <rect x="100" y="300" width="360" height="60" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="280" y="335" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">GPU Training Job</text>
+    <text x="280" y="350" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">PyTorch Training Container</text>
+    
+    <rect x="100" y="380" width="360" height="60" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="280" y="415" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Service Account</text>
+    <text x="280" y="430" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">RBAC Configuration</text>
+    
+    <rect x="100" y="460" width="360" height="60" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="280" y="495" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Persistent Storage</text>
+    <text x="280" y="510" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Model Artifacts</text>
+    
+    <rect x="100" y="540" width="360" height="60" rx="5" fill="#bbdefb" stroke="#1976d2" stroke-width="2"/>
+    <text x="280" y="575" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">ConfigMap</text>
+    <text x="280" y="590" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Training Code</text>
+    
+    <!-- Monitoring Components -->
+    <rect x="540" y="300" width="360" height="60" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="720" y="335" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Prometheus</text>
+    <text x="720" y="350" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Metrics Collection</text>
+    
+    <rect x="540" y="380" width="360" height="60" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="720" y="415" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Grafana</text>
+    <text x="720" y="430" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Visualization</text>
+    
+    <rect x="540" y="460" width="360" height="60" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="720" y="495" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">GPU Metrics Exporter</text>
+    <text x="720" y="510" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">NVIDIA DCGM</text>
+    
+    <rect x="540" y="540" width="360" height="60" rx="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="2"/>
+    <text x="720" y="575" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Alert Manager</text>
+    <text x="720" y="590" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Notifications</text>
+    
+    <!-- Arrows -->
+    <path d="M200,160 L200,300" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M450,160 L450,300" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M700,160 L700,300" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <path d="M460,330 L520,330" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M460,410 L520,410" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M460,490 L520,490" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M460,570 L520,570" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Arrow Definition -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <!-- Legend -->
+    <rect x="50" y="720" width="900" height="30" rx="5" fill="#fff" stroke="#666" stroke-width="1"/>
+    <text x="500" y="740" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">
+        Infrastructure as Code (Terraform) | CI/CD (GitHub Actions) | Container Orchestration (Kubernetes) | Monitoring (Prometheus/Grafana) | GPU Support (NVIDIA)
+    </text>
+</svg> 
